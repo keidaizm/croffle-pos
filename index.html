@@ -31,6 +31,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku
 .pay-opt.selected-cash .pay-label{color:#085041}
 .pay-opt.selected-pp{border:2.5px solid #E24B4A;background:#FCEBEB}
 .pay-opt.selected-pp .pay-label{color:#A32D2D}
+.channel-row{display:flex;gap:8px;flex-wrap:wrap}
+.channel-opt{flex:1;min-width:90px;border-radius:8px;border:2px solid #b4b2a9;background:#fff;cursor:pointer;padding:10px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.channel-opt .channel-label{font-size:12px;font-weight:500;color:#888780}
+.channel-opt.selected-store{border:2.5px solid #8A6B3F;background:#F8F1E6}
+.channel-opt.selected-store .channel-label{color:#6B4E2F}
+.channel-opt.selected-uber{border:2.5px solid #111;background:#F1F1F1}
+.channel-opt.selected-uber .channel-label{color:#111}
+.channel-opt.selected-rocket{border:2.5px solid #F26B21;background:#FFF1E8}
+.channel-opt.selected-rocket .channel-label{color:#B54810}
+.sub-label{font-size:11px;color:#888780;margin-bottom:8px}
+.sub-label.hidden{display:none}
+.pay-wrap.hidden{display:none}
 .order-item{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #ebebeb}
 .item-name{flex:1;font-size:13px;color:#1a1a18}
 .qty-ctrl{display:flex;align-items:center;gap:4px}
@@ -53,20 +65,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku
 .stat-card{background:#f5f5f2;border-radius:8px;padding:14px;border:1px solid #d0cfc7}
 .stat-label{font-size:11px;color:#888780;margin-bottom:4px}
 .stat-val{font-size:22px;font-weight:500;color:#1a1a18}
-.rank-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #ebebeb}
-.rank-no{font-size:12px;color:#b4b2a9;min-width:18px}
-.rank-name{flex:1;font-size:13px}
-.rank-bar-wrap{width:80px;height:6px;background:#d3d1c7;border-radius:3px;overflow:hidden}
-.rank-bar{height:100%;border-radius:3px}
-.rank-bar.all{background:#1D9E75}
-.rank-bar.cash{background:#378ADD}
-.rank-bar.pp{background:#E24B4A}
-.rank-cnt{font-size:12px;color:#888780;min-width:28px;text-align:right}
 .rank-filter{display:flex;gap:6px;margin-bottom:10px}
 .rfbtn{flex:1;padding:7px 6px;border-radius:8px;border:1.5px solid #b4b2a9;background:#fff;cursor:pointer;font-size:12px;font-weight:500;color:#888780;text-align:center}
 .rfbtn.active-all{border-color:#1D9E75;background:#E1F5EE;color:#085041}
 .rfbtn.active-cash{border-color:#378ADD;background:#E6F1FB;color:#0C447C}
 .rfbtn.active-pp{border-color:#E24B4A;background:#FCEBEB;color:#A32D2D}
+.rfbtn.active-uber{border-color:#111;background:#F1F1F1;color:#111}
+.rfbtn.active-rocket{border-color:#F26B21;background:#FFF1E8;color:#B54810}
+.item-summary-head,.item-summary-row{display:grid;grid-template-columns:1fr 88px;gap:10px;align-items:center}
+.item-summary-head{padding:0 0 8px;border-bottom:1px solid #d0cfc7;margin-bottom:4px;font-size:11px;color:#888780}
+.item-summary-row{padding:10px 0;border-bottom:1px solid #ebebeb}
+.item-summary-name{font-size:13px;color:#1a1a18}
+.item-summary-qty{font-size:13px;color:#5f5e5a;text-align:right}
 .hcard{border:1.5px solid #d0cfc7;border-radius:10px;padding:13px;margin-bottom:10px;background:#fff}
 .hcard-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .hcard-left{display:flex;align-items:center;gap:8px}
@@ -105,6 +115,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku
 .add-menu-btn{padding:5px 12px;border-radius:8px;border:1.5px dashed #b4b2a9;background:#fff;cursor:pointer;font-size:13px;color:#888780}
 .add-menu-btn:hover{background:#f5f5f2}
 .sort-hint{font-size:11px;color:#b4b2a9;margin-bottom:4px}
+.settings-channel-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.settings-channel-tab{padding:7px 12px;border-radius:8px;border:1.5px solid #b4b2a9;background:#fff;cursor:pointer;font-size:12px;color:#5f5e5a}
+.settings-channel-tab.active-store{border-color:#8A6B3F;background:#F8F1E6;color:#6B4E2F}
+.settings-channel-tab.active-uber{border-color:#111;background:#F1F1F1;color:#111}
+.settings-channel-tab.active-rocket{border-color:#F26B21;background:#FFF1E8;color:#B54810}
+.settings-note{font-size:12px;color:#888780;line-height:1.6;margin-bottom:12px}
+.settings-csv-box{background:#f5f5f2;border:1px solid #d0cfc7;border-radius:10px;padding:12px;margin-bottom:14px}
+.settings-csv-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.settings-csv-actions .csv-btn{margin-top:0;width:auto;min-width:180px}
 
 /* 集計・CSV共通セクション */
 .stats-section{background:#f5f5f2;border:1px solid #d0cfc7;border-radius:10px;padding:14px;margin-bottom:14px}
@@ -182,7 +201,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku
           <span class="order-title">注文内容</span>
           <button class="clear-btn" onclick="clearOrder()">クリア</button>
         </div>
-        <div class="pay-row">
+        <div class="sub-label">注文チャネル</div>
+        <div class="channel-row" id="channel-row-t">
+          <button class="channel-opt selected-store" id="channel-store-t" onclick="selChannel('店頭')">
+            <span class="channel-label">店頭</span>
+          </button>
+          <button class="channel-opt" id="channel-uber-t" onclick="selChannel('Uber')">
+            <span class="channel-label">Uber</span>
+          </button>
+          <button class="channel-opt" id="channel-rocket-t" onclick="selChannel('Rocket Now')">
+            <span class="channel-label">Rocket Now</span>
+          </button>
+        </div>
+        <div class="sub-label" id="pay-label-t" style="margin-top:10px">支払方法</div>
+        <div class="pay-row pay-wrap" id="pay-wrap-t">
           <button class="pay-opt selected-cash" id="pay-cash-t" onclick="selPay('現金')">
             <span style="font-size:22px;line-height:1">💴</span>
             <span class="pay-label">現金</span>
@@ -209,7 +241,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Hiragino Kaku
       <button class="clear-btn" onclick="clearOrder()">クリア</button>
     </div>
     <div class="sp-items" id="order-items-sp"><div class="empty">メニューを選択してください</div></div>
-    <div class="sp-pay-row">
+    <div class="sub-label">注文チャネル</div>
+    <div class="channel-row" id="channel-row-sp" style="margin-bottom:10px">
+      <button class="channel-opt selected-store" id="channel-store-sp" onclick="selChannel('店頭')">
+        <span class="channel-label">店頭</span>
+      </button>
+      <button class="channel-opt" id="channel-uber-sp" onclick="selChannel('Uber')">
+        <span class="channel-label">Uber</span>
+      </button>
+      <button class="channel-opt" id="channel-rocket-sp" onclick="selChannel('Rocket Now')">
+        <span class="channel-label">Rocket Now</span>
+      </button>
+    </div>
+    <div class="sub-label" id="pay-label-sp">支払方法</div>
+    <div class="sp-pay-row pay-wrap" id="pay-wrap-sp">
       <button class="pay-opt selected-cash" id="pay-cash-sp" onclick="selPay('現金')">
         <span style="font-size:20px;line-height:1">💴</span>
         <span class="pay-label">現金</span>
@@ -239,10 +284,39 @@ function updateClock(){
 updateClock();setInterval(updateClock,10000);
 
 const LS_SALES='croffle_sales',LS_MENUS='croffle_menus';
+const SALES_CHANNELS=['店頭','Uber','Rocket Now'];
+const CHANNEL_BUTTON_CLASS={
+  '店頭':'store',
+  'Uber':'uber',
+  'Rocket Now':'rocket'
+};
 function saveSales(){localStorage.setItem(LS_SALES,JSON.stringify(sales));}
-function loadSales(){try{const d=localStorage.getItem(LS_SALES);if(!d)return[];return JSON.parse(d).map(s=>({...s,time:new Date(s.time)}));}catch(e){return[];}}
+function normalizeSale(s){
+  const channel=SALES_CHANNELS.includes(s.channel)?s.channel:'店頭';
+  const payment=channel==='店頭'?(s.payment==='PayPay'?'PayPay':'現金'):channel;
+  return {...s,time:new Date(s.time),channel,payment};
+}
+function loadSales(){try{const d=localStorage.getItem(LS_SALES);if(!d)return[];return JSON.parse(d).map(normalizeSale);}catch(e){return[];}}
 function saveMenus(){localStorage.setItem(LS_MENUS,JSON.stringify(menus));}
 function loadMenus(){try{const d=localStorage.getItem(LS_MENUS);if(d)return JSON.parse(d);}catch(e){}return null;}
+function buildChannelConfig(name,price,visible){
+  return {name:name||'',price:Number.isFinite(price)?price:0,visible:visible!==false};
+}
+function normalizeMenu(m){
+  const legacyName=typeof m.name==='string'?m.name:'';
+  const legacyPrice=Number.isFinite(m.price)?m.price:0;
+  const legacyVisible=m.visible!==false;
+  const channels={};
+  SALES_CHANNELS.forEach(channel=>{
+    const src=m.channels&&m.channels[channel]?m.channels[channel]:null;
+    channels[channel]=buildChannelConfig(
+      src&&typeof src.name==='string'?src.name:legacyName,
+      src&&Number.isFinite(src.price)?src.price:legacyPrice,
+      src?src.visible:legacyVisible
+    );
+  });
+  return {id:m.id,cat:m.cat,channels};
+}
 
 const DEFAULT_MENUS=[
   {id:1,cat:'croffle',name:'プレーン',price:430,visible:true},
@@ -262,15 +336,26 @@ const DEFAULT_MENUS=[
   {id:15,cat:'drink',name:'ゆずエード',price:450,visible:true},
   {id:16,cat:'drink',name:'梨ジュース',price:250,visible:true},
   {id:17,cat:'drink',name:'ポップンジャ',price:500,visible:true}
-];
-let menus=loadMenus()||DEFAULT_MENUS;
+].map(normalizeMenu);
+let menus=(loadMenus()||DEFAULT_MENUS).map(normalizeMenu);
 let nextId=menus.reduce((m,x)=>Math.max(m,x.id),0)+1;
 let sales=loadSales();
-let order=[],payMethod='現金',delTarget=null,rankFilter='all';
+let order=[],payMethod='現金',salesChannel='店頭',settingsChannel='店頭',delTarget=null,rankFilter='all';
 // 集計の期間状態
 let statsFrom=todayStr2(),statsTo=todayStr2(),statsQuick='today';
 const CATS=[{key:'croffle',label:'クロッフル'},{key:'topping',label:'トッピング'},{key:'drink',label:'ドリンク'}];
 function getMenu(id){return menus.find(m=>m.id===id);}
+function getMenuChannelData(menu,channel){
+  if(!menu)return null;
+  const current=menu.channels&&menu.channels[channel]?menu.channels[channel]:null;
+  return current||buildChannelConfig('',0,false);
+}
+function getMenuView(id,channel){
+  const menu=getMenu(id);
+  if(!menu)return null;
+  const data=getMenuChannelData(menu,channel);
+  return {id:menu.id,cat:menu.cat,name:data.name,price:data.price,visible:data.visible};
+}
 
 function toDateStr(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function todayStr2(){return toDateStr(new Date());}
@@ -280,13 +365,50 @@ function fmtDate(str){return str.replace(/-/g,'/');}
 function periodLabel(){
   return statsFrom===statsTo?fmtDate(statsFrom):fmtDate(statsFrom)+' 〜 '+fmtDate(statsTo);
 }
+function esc(v){
+  return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function csvCell(v){
+  const str=String(v??'');
+  return /[",\n]/.test(str)?'"'+str.replace(/"/g,'""')+'"':str;
+}
+function parseCSV(text){
+  const rows=[];let row=[];let cell='';let inQuotes=false;
+  for(let i=0;i<text.length;i+=1){
+    const ch=text[i];
+    if(inQuotes){
+      if(ch==='"'){
+        if(text[i+1]==='"'){cell+='"';i+=1;}
+        else inQuotes=false;
+      }else cell+=ch;
+    }else if(ch==='"'){inQuotes=true;}
+    else if(ch===','){row.push(cell);cell='';}
+    else if(ch==='\n'){
+      row.push(cell);
+      if(row.some(col=>col!==''))rows.push(row);
+      row=[];cell='';
+    }else if(ch!=='\r')cell+=ch;
+  }
+  row.push(cell);
+  if(row.some(col=>col!==''))rows.push(row);
+  return rows;
+}
+function normalizeCategoryKey(v){
+  const key=String(v||'').trim();
+  const map={croffle:'croffle',topping:'topping',drink:'drink','クロッフル':'croffle','トッピング':'topping','ドリンク':'drink'};
+  return map[key]||'';
+}
+function categoryLabel(key){
+  const cat=CATS.find(c=>c.key===key);
+  return cat?cat.label:key;
+}
 
 function renderOrder(){
-  const total=order.reduce((s,o)=>{const m=getMenu(o.id);return s+(m?m.price:o.price)*o.qty;},0);
+  const total=order.reduce((s,o)=>{const m=getMenuView(o.id,salesChannel);return s+(m?m.price:o.price)*o.qty;},0);
   const totalStr='¥'+total.toLocaleString();
   const disabled=!order.length;
   const html=order.length
-    ?order.map(o=>{const m=getMenu(o.id);const p=m?m.price:o.price;const n=m?m.name:o.name;
+    ?order.map(o=>{const m=getMenuView(o.id,salesChannel);const p=m?m.price:o.price;const n=m?m.name:o.name;
       return '<div class="order-item"><div class="item-name">'+n+'</div><div class="qty-ctrl"><button class="qty-btn" onclick="chQty('+o.id+',-1)">−</button><span class="qty-num">'+o.qty+'</span><button class="qty-btn" onclick="chQty('+o.id+',1)">＋</button></div><div style="font-size:13px;color:#888780;min-width:54px;text-align:right">¥'+(p*o.qty).toLocaleString()+'</div><button class="xbtn" onclick="chQty('+o.id+',-'+o.qty+')">✕</button></div>';
     }).join(''):'<div class="empty">メニューを選択してください</div>';
   ['order-items-tablet','order-items-sp'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=html;});
@@ -294,7 +416,7 @@ function renderOrder(){
   ['checkout-btn-tablet','checkout-btn-sp'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=disabled;});
 }
 function addItem(id){
-  const m=getMenu(id);if(!m)return;
+  const m=getMenuView(id,salesChannel);if(!m||!m.visible)return;
   const ex=order.find(o=>o.id===id);
   if(ex)ex.qty++;else order.push({id,name:m.name,price:m.price,qty:1});
   renderOrder();
@@ -310,18 +432,41 @@ function selPay(m){
   ['pay-cash-t','pay-cash-sp'].forEach(id=>{const el=document.getElementById(id);if(el)el.className='pay-opt'+(m==='現金'?' selected-cash':'');});
   ['pay-pp-t','pay-pp-sp'].forEach(id=>{const el=document.getElementById(id);if(el)el.className='pay-opt'+(m==='PayPay'?' selected-pp':'');});
 }
+function selChannel(channel){
+  salesChannel=channel;
+  const states={
+    '店頭':'selected-store',
+    'Uber':'selected-uber',
+    'Rocket Now':'selected-rocket'
+  };
+  [['channel-store-t','店頭'],['channel-store-sp','店頭'],['channel-uber-t','Uber'],['channel-uber-sp','Uber'],['channel-rocket-t','Rocket Now'],['channel-rocket-sp','Rocket Now']].forEach(([id,value])=>{
+    const el=document.getElementById(id);
+    if(el)el.className='channel-opt'+(channel===value?' '+states[value]:'');
+  });
+  ['pay-wrap-t','pay-wrap-sp'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.className='pay-row pay-wrap'+(id==='pay-wrap-sp'?' sp-pay-row':'')+(channel==='店頭'?'':' hidden');
+  });
+  ['pay-label-t','pay-label-sp'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.className='sub-label'+(channel==='店頭'?'':' hidden');
+  });
+  renderOrderMenu();
+}
 function checkout(){
-  const total=order.reduce((s,o)=>{const m=getMenu(o.id);return s+(m?m.price:o.price)*o.qty;},0);
+  const total=order.reduce((s,o)=>{const m=getMenuView(o.id,salesChannel);return s+(m?m.price:o.price)*o.qty;},0);
   const now=new Date();
-  sales.push({id:Date.now(),time:now,items:order.map(o=>{const m=getMenu(o.id);return{id:o.id,name:m?m.name:o.name,price:m?m.price:o.price,qty:o.qty};}),total,payment:payMethod});
+  const payment=salesChannel==='店頭'?payMethod:salesChannel;
+  sales.push({id:Date.now(),time:now,items:order.map(o=>{const m=getMenuView(o.id,salesChannel);return{id:o.id,name:m?m.name:o.name,price:m?m.price:o.price,qty:o.qty};}),total,payment,channel:salesChannel});
   saveSales();toast('会計完了 ¥'+total.toLocaleString());
   order=[];renderOrder();
 }
 function renderOrderMenu(){
   document.getElementById('main-order').innerHTML=CATS.map(c=>{
-    const items=menus.filter(m=>m.cat===c.key&&m.visible);
-    return '<div class="sec">'+c.label+'</div><div class="menu-grid">'+items.map(m=>'<button class="menu-btn" onclick="addItem('+m.id+')">'+m.name+'<span class="mprice">¥'+m.price.toLocaleString()+'</span></button>').join('')+'</div>';
+    const items=menus.map(m=>({base:m,view:getMenuChannelData(m,salesChannel)})).filter(m=>m.base.cat===c.key&&m.view.visible);
+    return '<div class="sec">'+c.label+'</div><div class="menu-grid">'+items.map(m=>'<button class="menu-btn" onclick="addItem('+m.base.id+')">'+esc(m.view.name)+'<span class="mprice">¥'+m.view.price.toLocaleString()+'</span></button>').join('')+'</div>';
   }).join('');
+  renderOrder();
 }
 function sw(tab){
   ['order','history','stats','settings'].forEach(t=>document.getElementById('main-'+t).style.display=t===tab?'':'none');
@@ -341,14 +486,16 @@ function renderHistory(){
     const no=sales.length-ri;const d=s.time;
     const dateStr=(d.getMonth()+1)+'/'+d.getDate();
     const timeStr=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
-    return '<div class="hcard"><div class="hcard-top"><div class="hcard-left"><span class="hno">#'+no+'</span><span class="htime">'+dateStr+' '+timeStr+'</span><span class="hbadge">'+s.payment+'</span></div><span class="htotal">¥'+s.total.toLocaleString()+'</span></div><div class="hlines">'+s.items.map(it=>'<div class="hline"><span>'+it.name+' × '+it.qty+'</span><span>¥'+(it.price*it.qty).toLocaleString()+'</span></div>').join('')+'</div><button class="del-btn" onclick="confirmDel('+s.id+')">この会計を削除する</button></div>';
+    const badges='<span class="hbadge">'+s.channel+'</span>'+(s.channel==='店頭'?'<span class="hbadge">'+s.payment+'</span>':'');
+    return '<div class="hcard"><div class="hcard-top"><div class="hcard-left"><span class="hno">#'+no+'</span><span class="htime">'+dateStr+' '+timeStr+'</span>'+badges+'</div><span class="htotal">¥'+s.total.toLocaleString()+'</span></div><div class="hlines">'+s.items.map(it=>'<div class="hline"><span>'+it.name+' × '+it.qty+'</span><span>¥'+(it.price*it.qty).toLocaleString()+'</span></div>').join('')+'</div><button class="del-btn" onclick="confirmDel('+s.id+')">この会計を削除する</button></div>';
   }).join('');
 }
 function confirmDel(id){
   delTarget=id;const s=sales.find(x=>x.id===id);if(!s)return;
   const d=s.time;const timeStr=(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
   const ov=document.createElement('div');ov.className='overlay';ov.id='ov';
-  ov.innerHTML='<div class="cbox"><div class="ctitle">会計を削除しますか？</div><div class="cdesc">'+timeStr+' の会計（¥'+s.total.toLocaleString()+' / '+s.payment+'）を削除します。この操作は取り消せません。</div><div class="cbtns"><button class="ccnl" onclick="closeOv()">キャンセル</button><button class="cdel" onclick="doDel()">削除する</button></div></div>';
+  const label=s.channel==='店頭'?s.channel+' / '+s.payment:s.channel;
+  ov.innerHTML='<div class="cbox"><div class="ctitle">会計を削除しますか？</div><div class="cdesc">'+timeStr+' の会計（¥'+s.total.toLocaleString()+' / '+label+'）を削除します。この操作は取り消せません。</div><div class="cbtns"><button class="ccnl" onclick="closeOv()">キャンセル</button><button class="cdel" onclick="doDel()">削除する</button></div></div>';
   document.body.appendChild(ov);
 }
 function closeOv(){const o=document.getElementById('ov');if(o)o.remove();delTarget=null;}
@@ -390,6 +537,9 @@ function refreshStats(){
   const cnt=filtered.length;
   const cash=filtered.filter(s=>s.payment==='現金').reduce((s,o)=>s+o.total,0);
   const pp=filtered.filter(s=>s.payment==='PayPay').reduce((s,o)=>s+o.total,0);
+  const store=filtered.filter(s=>s.channel==='店頭').reduce((s,o)=>s+o.total,0);
+  const uber=filtered.filter(s=>s.channel==='Uber').reduce((s,o)=>s+o.total,0);
+  const rocket=filtered.filter(s=>s.channel==='Rocket Now').reduce((s,o)=>s+o.total,0);
   // サマリー更新
   const el=document.getElementById('stats-summary');
   if(el)el.innerHTML=
@@ -399,13 +549,18 @@ function refreshStats(){
     '<div class="stat-card"><div class="stat-label">会計回数</div><div class="stat-val">'+cnt+'件</div></div>'+
     '<div class="stat-card"><div class="stat-label">現金</div><div class="stat-val">¥'+cash.toLocaleString()+'</div></div>'+
     '<div class="stat-card"><div class="stat-label">PayPay</div><div class="stat-val">¥'+pp.toLocaleString()+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">店頭合計</div><div class="stat-val">¥'+store.toLocaleString()+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Uber</div><div class="stat-val">¥'+uber.toLocaleString()+'</div></div>'+
+    '<div class="stat-card"><div class="stat-label">Rocket Now</div><div class="stat-val">¥'+rocket.toLocaleString()+'</div></div>'+
     '</div>';
   rankFilter='all';
-  const rfAll=document.getElementById('rf-all');const rfCash=document.getElementById('rf-cash');const rfPp=document.getElementById('rf-pp');
+  const rfAll=document.getElementById('rf-all');const rfCash=document.getElementById('rf-cash');const rfPp=document.getElementById('rf-pp');const rfUber=document.getElementById('rf-uber');const rfRocket=document.getElementById('rf-rocket');
   if(rfAll)rfAll.className='rfbtn active-all';
   if(rfCash)rfCash.className='rfbtn';
   if(rfPp)rfPp.className='rfbtn';
-  renderRanking();
+  if(rfUber)rfUber.className='rfbtn';
+  if(rfRocket)rfRocket.className='rfbtn';
+  renderItemSummary();
   // CSV件数更新
   const oldest=sales.length?toDateStr(sales[0].time):'—';
   const newest=sales.length?toDateStr(sales[sales.length-1].time):'—';
@@ -418,18 +573,18 @@ function setRankFilter(f){
   document.getElementById('rf-all').className='rfbtn'+(f==='all'?' active-all':'');
   document.getElementById('rf-cash').className='rfbtn'+(f==='現金'?' active-cash':'');
   document.getElementById('rf-pp').className='rfbtn'+(f==='PayPay'?' active-pp':'');
-  renderRanking();
+  document.getElementById('rf-uber').className='rfbtn'+(f==='Uber'?' active-uber':'');
+  document.getElementById('rf-rocket').className='rfbtn'+(f==='Rocket Now'?' active-rocket':'');
+  renderItemSummary();
 }
-function renderRanking(){
+function renderItemSummary(){
   const filtered=getSalesByPeriod();
-  const byPay=rankFilter==='all'?filtered:filtered.filter(s=>s.payment===rankFilter);
+  const byPay=rankFilter==='all'?filtered:filtered.filter(s=>s.payment===rankFilter||s.channel===rankFilter);
   const rm={};byPay.forEach(s=>s.items.forEach(it=>{rm[it.name]=(rm[it.name]||0)+it.qty;}));
-  const ranked=Object.entries(rm).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  const mx=ranked[0]?ranked[0][1]:1;
-  const barClass=rankFilter==='現金'?'cash':rankFilter==='PayPay'?'pp':'all';
-  const el=document.getElementById('rank-list');if(!el)return;
-  el.innerHTML=ranked.length
-    ?ranked.map((r,i)=>'<div class="rank-item"><span class="rank-no">'+(i+1)+'</span><span class="rank-name">'+r[0]+'</span><div class="rank-bar-wrap"><div class="rank-bar '+barClass+'" style="width:'+Math.round(r[1]/mx*100)+'%"></div></div><span class="rank-cnt">'+r[1]+'個</span></div>').join('')
+  const summary=Object.entries(rm).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'ja'));
+  const el=document.getElementById('item-summary-list');if(!el)return;
+  el.innerHTML=summary.length
+    ?'<div class="item-summary-head"><span>種類</span><span style="text-align:right">数量</span></div>'+summary.map(r=>'<div class="item-summary-row"><span class="item-summary-name">'+esc(r[0])+'</span><span class="item-summary-qty">'+r[1]+'個</span></div>').join('')
     :'<div class="empty" style="padding:16px 0">データがありません</div>';
 }
 
@@ -455,14 +610,16 @@ function renderStats(){
     '</div>'+
     // サマリー
     '<div id="stats-summary"></div>'+
-    // ランキング
-    '<div class="sec">売れ筋ランキング</div>'+
+    // 商品別集計
+    '<div class="sec">商品別数量集計</div>'+
     '<div class="rank-filter">'+
     '<button class="rfbtn active-all" id="rf-all" onclick="setRankFilter(\'all\')">すべて</button>'+
     '<button class="rfbtn" id="rf-cash" onclick="setRankFilter(\'現金\')">💴 現金のみ</button>'+
     '<button class="rfbtn" id="rf-pp" onclick="setRankFilter(\'PayPay\')">PayPayのみ</button>'+
+    '<button class="rfbtn" id="rf-uber" onclick="setRankFilter(\'Uber\')">Uberのみ</button>'+
+    '<button class="rfbtn" id="rf-rocket" onclick="setRankFilter(\'Rocket Now\')">Rocket Nowのみ</button>'+
     '</div>'+
-    '<div id="rank-list"></div>'+
+    '<div id="item-summary-list"></div>'+
     // CSVセクション
     '<div class="stats-section" style="margin-top:16px">'+
     '<div class="stats-section-title">CSVダウンロード（期間指定）</div>'+
@@ -500,20 +657,96 @@ function dlCSV(){
   const from=fromEl?fromEl.value:todayStr2();const to=toEl?toEl.value:todayStr2();
   const filtered=sales.filter(s=>{const ds=toDateStr(s.time);return ds>=from&&ds<=to;});
   if(!filtered.length){alert('指定期間にデータがありません');return;}
-  const rows=[['日付','時刻','注文番号','メニュー','数量','単価','小計','合計','支払方法']];
+  const rows=[['日付','時刻','注文番号','メニュー','数量','単価','小計','合計','注文チャネル','支払方法']];
   filtered.forEach((s,i)=>{
     const d=s.time;const ds=d.getFullYear()+'/'+(d.getMonth()+1)+'/'+d.getDate();
     const ts=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
-    s.items.forEach((it,j)=>rows.push([ds,ts,i+1,it.name,it.qty,it.price,it.price*it.qty,j===0?s.total:'',j===0?s.payment:'']));
+    s.items.forEach((it,j)=>rows.push([ds,ts,i+1,it.name,it.qty,it.price,it.price*it.qty,j===0?s.total:'',j===0?s.channel:'',j===0?s.payment:'']));
   });
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob(['\uFEFF'+rows.map(r=>r.join(',')).join('\n')],{type:'text/csv;charset=utf-8'}));
   a.download='売上_'+from.replace(/-/g,'')+'_'+to.replace(/-/g,'')+'.csv';a.click();
 }
+function downloadMenuCSV(){
+  const rows=[['id','category','name','price','visible']];
+  menus.forEach(menu=>{
+    const data=getMenuChannelData(menu,settingsChannel);
+    rows.push([menu.id,categoryLabel(menu.cat),data.name,data.price,data.visible?'1':'0']);
+  });
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['\uFEFF'+rows.map(r=>r.map(csvCell).join(',')).join('\n')],{type:'text/csv;charset=utf-8'}));
+  a.download='メニュー_'+settingsChannel+'_'+todayStr2().replace(/-/g,'')+'.csv';
+  a.click();
+}
+function openMenuCSVInput(){
+  const input=document.getElementById('menu-csv-input');
+  if(input)input.click();
+}
+function importMenuCSV(event){
+  const file=event.target.files&&event.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const rows=parseCSV(String(reader.result||''));
+      if(rows.length<2)throw new Error('CSVにデータ行がありません');
+      const header=rows[0].map(v=>String(v).trim().toLowerCase());
+      const idIndex=header.indexOf('id');
+      const categoryIndex=header.indexOf('category');
+      const nameIndex=header.indexOf('name');
+      const priceIndex=header.indexOf('price');
+      const visibleIndex=header.indexOf('visible');
+      if(categoryIndex===-1||nameIndex===-1||priceIndex===-1)throw new Error('category,name,price 列が必要です');
+      let imported=0;
+      rows.slice(1).forEach(cols=>{
+        const name=String(cols[nameIndex]||'').trim();
+        if(!name)return;
+        const cat=normalizeCategoryKey(cols[categoryIndex]);
+        const price=parseInt(cols[priceIndex],10);
+        if(!cat||!Number.isFinite(price)||price<=0)return;
+        const visibleValue=visibleIndex===-1?'1':String(cols[visibleIndex]||'').trim().toLowerCase();
+        const visible=!['0','false','off','no'].includes(visibleValue);
+        const idValue=idIndex===-1?'':String(cols[idIndex]||'').trim();
+        let menu=idValue?getMenu(parseInt(idValue,10)):null;
+        if(menu){
+          menu.cat=cat;
+        }else{
+          menu=normalizeMenu({id:nextId++,cat,name:'',price:0,visible:true});
+          menus.push(menu);
+        }
+        menu.channels[settingsChannel]={name,price,visible};
+        imported+=1;
+      });
+      if(!imported)throw new Error('取り込める行がありませんでした');
+      saveMenus();
+      renderSettings();
+      renderOrderMenu();
+      toast(settingsChannel+' のメニューCSVを取り込みました');
+    }catch(err){
+      alert('CSV取込に失敗しました: '+err.message);
+    }finally{
+      event.target.value='';
+    }
+  };
+  reader.readAsText(file,'utf-8');
+}
 
 let dragSrcId=null;
 function renderSettings(){
   document.getElementById('main-settings').innerHTML=
+    '<div class="settings-channel-tabs">'+
+    SALES_CHANNELS.map(channel=>'<button class="settings-channel-tab'+(settingsChannel===channel?' active-'+CHANNEL_BUTTON_CLASS[channel]:'')+'" onclick="setSettingsChannel(\''+channel+'\')">'+channel+'</button>').join('')+
+    '</div>'+
+    '<div class="settings-note">選択中のチャネルごとに、メニュー名・価格・表示設定を変更できます。並び順とカテゴリは共通です。</div>'+
+    '<div class="settings-csv-box">'+
+    '<div class="stats-section-title" style="margin-bottom:6px">メニューCSV</div>'+
+    '<div class="settings-note" style="margin-bottom:0">'+settingsChannel+' 用のメニューをCSVでダウンロード・アップロードできます。列は `id, category, name, price, visible` です。`id` が一致すれば更新、空欄なら新規追加します。</div>'+
+    '<div class="settings-csv-actions">'+
+    '<button class="csv-btn" onclick="downloadMenuCSV()">'+settingsChannel+' のCSVをダウンロード</button>'+
+    '<button class="csv-btn" onclick="openMenuCSVInput()">'+settingsChannel+' のCSVをアップロード</button>'+
+    '</div>'+
+    '<input type="file" id="menu-csv-input" accept=".csv,text/csv" onchange="importMenuCSV(event)" style="display:none" />'+
+    '</div>'+
     '<div class="sort-hint">☰ をドラッグして順番を変えられます</div>'+
     CATS.map(c=>
       '<div class="cat-header"><span class="sec" style="margin:0">'+c.label+'</span><button class="add-menu-btn" onclick="addMenu(\''+c.key+'\')">＋ 追加</button></div>'+
@@ -522,13 +755,18 @@ function renderSettings(){
   initDrag();
 }
 function buildSrow(m){
+  const data=getMenuChannelData(m,settingsChannel);
   return '<div class="srow" id="srow-'+m.id+'" data-id="'+m.id+'" draggable="true">'+
     '<span class="drag-handle">☰</span>'+
-    '<input class="sname-input" value="'+m.name+'" onchange="updName('+m.id+',this.value)" />'+
-    '<input class="sprice-input" type="number" value="'+m.price+'" onchange="updPrice('+m.id+',this.value)" />'+
-    '<button class="toggle-btn '+(m.visible?'on':'off')+'" id="tog-'+m.id+'" onclick="togVis('+m.id+')"></button>'+
+    '<input class="sname-input" value="'+esc(data.name)+'" onchange="updName('+m.id+',this.value)" />'+
+    '<input class="sprice-input" type="number" value="'+data.price+'" onchange="updPrice('+m.id+',this.value)" />'+
+    '<button class="toggle-btn '+(data.visible?'on':'off')+'" id="tog-'+m.id+'" onclick="togVis('+m.id+')"></button>'+
     '<button class="sdel-btn" onclick="delMenu('+m.id+')">×</button>'+
     '</div>';
+}
+function setSettingsChannel(channel){
+  settingsChannel=channel;
+  renderSettings();
 }
 function initDrag(){
   document.querySelectorAll('.srow').forEach(row=>{
@@ -542,25 +780,44 @@ function initDrag(){
       if(!srcM||!tgtM||srcM.cat!==tgtM.cat)return;
       const si=menus.findIndex(m=>m.id===dragSrcId);menus.splice(si,1);
       const ti=menus.findIndex(m=>m.id===targetId);menus.splice(ti+1,0,srcM);
-      saveMenus();renderSettings();
+      saveMenus();renderSettings();renderOrderMenu();
     });
   });
 }
-function updName(id,v){const m=getMenu(id);if(m&&v.trim()){m.name=v.trim();saveMenus();}}
-function updPrice(id,v){const m=getMenu(id);const n=parseInt(v);if(m&&!isNaN(n)&&n>0){m.price=n;saveMenus();}}
+function updName(id,v){
+  const m=getMenu(id);
+  if(m&&v.trim()){
+    m.channels[settingsChannel].name=v.trim();
+    saveMenus();
+    if(salesChannel===settingsChannel)renderOrderMenu();
+  }
+}
+function updPrice(id,v){
+  const m=getMenu(id);const n=parseInt(v);
+  if(m&&!isNaN(n)&&n>0){
+    m.channels[settingsChannel].price=n;
+    saveMenus();
+    if(salesChannel===settingsChannel)renderOrderMenu();
+  }
+}
 function togVis(id){
-  const m=getMenu(id);if(!m)return;m.visible=!m.visible;saveMenus();
-  const btn=document.getElementById('tog-'+id);if(btn)btn.className='toggle-btn '+(m.visible?'on':'off');
+  const m=getMenu(id);if(!m)return;
+  m.channels[settingsChannel].visible=!m.channels[settingsChannel].visible;
+  saveMenus();
+  const btn=document.getElementById('tog-'+id);if(btn)btn.className='toggle-btn '+(m.channels[settingsChannel].visible?'on':'off');
+  if(salesChannel===settingsChannel)renderOrderMenu();
 }
 function delMenu(id){
   if(!confirm('このメニューを削除しますか？'))return;
   menus=menus.filter(m=>m.id!==id);saveMenus();renderSettings();
+  renderOrderMenu();
 }
 function addMenu(cat){
-  const newM={id:nextId++,cat,name:'新しいメニュー',price:500,visible:true};
+  const newM=normalizeMenu({id:nextId++,cat,name:'新しいメニュー',price:500,visible:true});
   menus.push(newM);saveMenus();renderSettings();
   const input=document.querySelector('#srow-'+newM.id+' .sname-input');
   if(input){input.focus();input.select();}
+  if(salesChannel===settingsChannel)renderOrderMenu();
 }
 function toast(msg,err){
   const t=document.getElementById('toast');
@@ -568,6 +825,7 @@ function toast(msg,err){
   t.className='toast show';setTimeout(()=>t.className='toast',2200);
 }
 renderOrderMenu();
+selChannel('店頭');
 </script>
 </body>
 </html>
